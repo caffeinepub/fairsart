@@ -1,0 +1,178 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-product-catalog-page-that-displays-all-available-products-with-images-names-prices-and-descriptions",
+      "featureTitle": "Create a product catalog page that displays all available products with images, names, prices, and descriptions",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/ProductCatalog.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-product-detail-pages-that-show-full-product-information-including-larger-images-complete-descriptions-and-purchase-options",
+      "featureTitle": "Implement product detail pages that show full product information including larger images, complete descriptions, and purchase options",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/ProductDetail.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-shopping-cart-system-where-users-can-add-products-adjust-quantities-and-see-total-prices",
+      "featureTitle": "Create a shopping cart system where users can add products, adjust quantities, and see total prices",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Cart.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-checkout-flow-that-collects-customer-information-name-email-shipping-address-and-processes-orders",
+      "featureTitle": "Build a checkout flow that collects customer information (name, email, shipping address) and processes orders",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Checkout.tsx",
+        "frontend/src/pages/OrderConfirmation.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-an-admin-panel-for-managing-products-add-edit-delete-products-with-images-names-prices-and-descriptions",
+      "featureTitle": "Create an admin panel for managing products (add, edit, delete products with images, names, prices, and descriptions)",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/AdminPanel.tsx",
+        "frontend/src/pages/AdminProductForm.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-the-store-name-fairsart-prominently-in-the-header-and-throughout-the-application",
+      "featureTitle": "Display the store name 'fairsart' prominently in the header and throughout the application",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/Layout.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-design-a-sophisticated-artistic-visual-theme-with-warm-earth-tones-elegant-serif-typography-for-headings-and-clean-layouts-that-reflect-an-artisan-or-handcrafted-aesthetic-appropriate-for-fairsart",
+      "featureTitle": "Design a sophisticated, artistic visual theme with warm earth tones, elegant serif typography for headings, and clean layouts that reflect an artisan or handcrafted aesthetic appropriate for fairsart",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-render-generated-images-as-static-assets-in-frontend-public-assets-generated-for-the-fairsart-store-logo-and-product-placeholder-images",
+      "featureTitle": "Render generated images as static assets in frontend/public/assets/generated for the fairsart store logo and product placeholder images",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/pages/Home.tsx",
+        "frontend/src/pages/ProductCatalog.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

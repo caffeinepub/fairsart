@@ -1,0 +1,254 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fairsart E-commerce Store Frontend",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create a product catalog page that displays all available products with images, names, prices, and descriptions",
+      "acceptanceCriteria": [
+        "Products are displayed in a grid layout",
+        "Each product shows an image, name, price, and short description",
+        "Products can be filtered or searched"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ProductCatalog.tsx",
+          "operation": "create",
+          "description": "Create product catalog page component that fetches products using getAllProducts backend method, displays them in a responsive grid layout using shadcn/ui Card components, shows product images via ExternalBlob.getDirectURL(), and includes search/filter functionality. Use placeholder image from frontend/public/assets/generated/product-placeholder.dim_600x600.png for products without images."
+        },
+        {
+          "path": "frontend/src/hooks/useProducts.ts",
+          "operation": "create",
+          "description": "Create React Query hook for fetching all products using actor.getAllProducts(), with caching and error handling. Returns products array, loading state, and error state."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /products pointing to ProductCatalog component and ensure navigation includes link to product catalog."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement product detail pages that show full product information including larger images, complete descriptions, and purchase options",
+      "acceptanceCriteria": [
+        "Clicking a product navigates to its detail page",
+        "Detail page shows high-quality product images",
+        "Complete product description and specifications are visible",
+        "Add to cart button is available"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ProductDetail.tsx",
+          "operation": "create",
+          "description": "Create product detail page that fetches individual product using getProduct backend method with productId from route params, displays large product image via ExternalBlob.getDirectURL(), shows complete description, price, and includes Add to Cart button that calls addToCart backend method. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/hooks/useProduct.ts",
+          "operation": "create",
+          "description": "Create React Query hook for fetching single product by ID using actor.getProduct(id), with caching and error handling."
+        },
+        {
+          "path": "frontend/src/hooks/useCart.ts",
+          "operation": "create",
+          "description": "Create React Query mutations for cart operations: addToCart, removeFromCart, and clearCart using respective backend methods. Include optimistic updates and invalidation of cart queries."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /products/:id pointing to ProductDetail component, enabling navigation from catalog to detail pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create a shopping cart system where users can add products, adjust quantities, and see total prices",
+      "acceptanceCriteria": [
+        "Users can add products to cart from product pages",
+        "Cart shows all added products with quantities",
+        "Users can increase, decrease, or remove items from cart",
+        "Cart displays subtotal and total prices",
+        "Cart persists across page navigation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Cart.tsx",
+          "operation": "create",
+          "description": "Create cart page that fetches cart items using getCart backend method, displays cart items with product details (fetched via getProduct for each item), shows quantities with increment/decrement controls, displays calculated totals, and includes Remove button for each item. Provides Proceed to Checkout button navigating to checkout page."
+        },
+        {
+          "path": "frontend/src/hooks/useCartData.ts",
+          "operation": "create",
+          "description": "Create React Query hook for fetching cart using actor.getCart(), with automatic refetch on mutations. Returns cart items, loading state, and computed total."
+        },
+        {
+          "path": "frontend/src/components/CartIcon.tsx",
+          "operation": "create",
+          "description": "Create cart icon component for header/navigation that displays cart item count badge and links to /cart page. Fetches cart count using useCartData hook."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /cart pointing to Cart component and integrate CartIcon into navigation/header area."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Build a checkout flow that collects customer information (name, email, shipping address) and processes orders",
+      "acceptanceCriteria": [
+        "Checkout form collects customer name, email, and shipping address",
+        "Form validation ensures all required fields are completed",
+        "Order summary shows products, quantities, and total price",
+        "Orders are saved to the backend with unique order IDs",
+        "Confirmation message is displayed after successful checkout"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Checkout.tsx",
+          "operation": "create",
+          "description": "Create checkout page with form collecting customerName, customerEmail, and shippingAddress using shadcn/ui Form components with validation (react-hook-form + zod). Display order summary with cart items and total. On submit, call checkout backend method and navigate to confirmation page on success. Handle validation errors and backend errors gracefully."
+        },
+        {
+          "path": "frontend/src/pages/OrderConfirmation.tsx",
+          "operation": "create",
+          "description": "Create order confirmation page that displays success message with order ID from route params or state, shows order details using getOrder backend method, and provides link to view orders or return to catalog."
+        },
+        {
+          "path": "frontend/src/hooks/useCheckout.ts",
+          "operation": "create",
+          "description": "Create React Query mutation for checkout using actor.checkout(customerName, customerEmail, shippingAddress), handling success navigation and cart clearing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add routes for /checkout pointing to Checkout component and /order-confirmation/:orderId for OrderConfirmation component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create an admin panel for managing products (add, edit, delete products with images, names, prices, and descriptions)",
+      "acceptanceCriteria": [
+        "Admin can add new products with all details",
+        "Admin can edit existing product information",
+        "Admin can delete products from the catalog",
+        "Admin can upload and manage product images",
+        "Changes are immediately reflected on the storefront"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AdminPanel.tsx",
+          "operation": "create",
+          "description": "Create admin panel page showing product management interface with table of all products and Add Product button. Use the authorization component's access control by checking isCallerAdmin backend method and showing access denied if not admin. Display products list with Edit and Delete actions for each product."
+        },
+        {
+          "path": "frontend/src/pages/AdminProductForm.tsx",
+          "operation": "create",
+          "description": "Create product form page for adding/editing products with fields for name, price, description, and image upload. Use ExternalBlob.fromBytes for image upload with progress tracking via withUploadProgress. On submit, call addProduct or updateProduct backend methods. Include image preview showing uploaded or existing product image via ExternalBlob.getDirectURL(). Verify the blob-storage component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useProductMutations.ts",
+          "operation": "create",
+          "description": "Create React Query mutations for addProduct, updateProduct, and deleteProduct using respective backend methods. Include optimistic updates and invalidation of product queries on success."
+        },
+        {
+          "path": "frontend/src/hooks/useAdminCheck.ts",
+          "operation": "create",
+          "description": "Create React Query hook for checking admin status using actor.isCallerAdmin(), used to guard admin routes and UI elements. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/AdminRoute.tsx",
+          "operation": "create",
+          "description": "Create admin route wrapper component that checks admin status using useAdminCheck and redirects non-admins to access denied page or home. Use the authorization component to verify admin access."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add routes for /admin pointing to AdminPanel wrapped in AdminRoute, /admin/products/new for AdminProductForm (add mode), and /admin/products/:id/edit for AdminProductForm (edit mode). Add admin link in navigation visible only when user is admin."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Display the store name 'fairsart' prominently in the header and throughout the application",
+      "acceptanceCriteria": [
+        "Store name 'fairsart' appears in the header/navigation",
+        "Store branding is consistent across all pages",
+        "Store name is visible on all major views"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Create header component displaying store logo image from frontend/public/assets/generated/fairsart-logo.dim_400x400.png with store name 'fairsart' as text fallback, navigation links to catalog/cart/admin, and auth controls (LoginButton from authorization component usage). Use sticky positioning for persistent visibility."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create layout wrapper component that includes Header and wraps page content with consistent structure. Ensures 'fairsart' branding appears on all pages."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all routes with Layout component to ensure consistent header with 'fairsart' branding across all pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Design a sophisticated, artistic visual theme with warm earth tones, elegant serif typography for headings, and clean layouts that reflect an artisan or handcrafted aesthetic appropriate for fairsart",
+      "acceptanceCriteria": [
+        "Color palette uses warm, natural tones (terracotta, cream, sage, warm browns)",
+        "Typography combines elegant serifs for headings with readable sans-serifs for body text",
+        "Layout emphasizes product imagery with generous whitespace",
+        "Overall aesthetic feels artisanal, curated, and sophisticated"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global styles to include warm earth tone color variables (terracotta, cream, sage, warm browns) in CSS custom properties, import elegant serif font (e.g., Playfair Display or Cormorant Garamond) for headings via Google Fonts, and set base typography pairing serif headings with sans-serif body text. Apply artisanal aesthetic with refined spacing and natural color tones."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom color palette for warm earth tones (terracotta, cream, sage, warm browns), add serif font family for headings, configure spacing for generous whitespace, and set up artisan-appropriate design tokens matching fairsart aesthetic."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Render generated images as static assets in frontend/public/assets/generated for the fairsart store logo and product placeholder images",
+      "acceptanceCriteria": [
+        "Generated images are placed in frontend/public/assets/generated",
+        "Images are referenced correctly in React components",
+        "Store logo appears in header/navigation",
+        "Product placeholders are used where product images are not yet available"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Reference store logo image from frontend/public/assets/generated/fairsart-logo.dim_400x400.png in Header component using img tag with /assets/generated/fairsart-logo.dim_400x400.png as src. Include alt text 'fairsart logo'."
+        },
+        {
+          "path": "frontend/src/pages/ProductCatalog.tsx",
+          "operation": "modify",
+          "description": "Use product placeholder image from frontend/public/assets/generated/product-placeholder.dim_600x600.png as fallback when product images are unavailable. Reference as /assets/generated/product-placeholder.dim_600x600.png."
+        },
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "create",
+          "description": "Create home/landing page featuring hero banner image from frontend/public/assets/generated/hero-banner.dim_1200x400.png with welcome message, store introduction, and featured products or call-to-action linking to product catalog. Apply artisan aesthetic with warm earth tones."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for / (home) pointing to Home component and set it as default/index route."
+        }
+      ]
+    }
+  ]
+}

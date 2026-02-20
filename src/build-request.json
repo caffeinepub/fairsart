@@ -1,0 +1,175 @@
+{
+  "kind": "build_request",
+  "title": "Create e-commerce store for fairsart",
+  "projectName": "Fairsart Store",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a product catalog page that displays all available products with images, names, prices, and descriptions",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a app for selling my product"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Products are displayed in a grid layout",
+        "Each product shows an image, name, price, and short description",
+        "Products can be filtered or searched"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement product detail pages that show full product information including larger images, complete descriptions, and purchase options",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a app for selling my product"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking a product navigates to its detail page",
+        "Detail page shows high-quality product images",
+        "Complete product description and specifications are visible",
+        "Add to cart button is available"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create a shopping cart system where users can add products, adjust quantities, and see total prices",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "selling my product"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can add products to cart from product pages",
+        "Cart shows all added products with quantities",
+        "Users can increase, decrease, or remove items from cart",
+        "Cart displays subtotal and total prices",
+        "Cart persists across page navigation"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Build a checkout flow that collects customer information (name, email, shipping address) and processes orders",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "selling my product"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Checkout form collects customer name, email, and shipping address",
+        "Form validation ensures all required fields are completed",
+        "Order summary shows products, quantities, and total price",
+        "Orders are saved to the backend with unique order IDs",
+        "Confirmation message is displayed after successful checkout"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create an admin panel for managing products (add, edit, delete products with images, names, prices, and descriptions)",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "selling my product"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin can add new products with all details",
+        "Admin can edit existing product information",
+        "Admin can delete products from the catalog",
+        "Admin can upload and manage product images",
+        "Changes are immediately reflected on the storefront"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Display the store name 'fairsart' prominently in the header and throughout the application",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Store name fairsart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Store name 'fairsart' appears in the header/navigation",
+        "Store branding is consistent across all pages",
+        "Store name is visible on all major views"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Design a sophisticated, artistic visual theme with warm earth tones, elegant serif typography for headings, and clean layouts that reflect an artisan or handcrafted aesthetic appropriate for fairsart",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color palette uses warm, natural tones (terracotta, cream, sage, warm browns)",
+        "Typography combines elegant serifs for headings with readable sans-serifs for body text",
+        "Layout emphasizes product imagery with generous whitespace",
+        "Overall aesthetic feels artisanal, curated, and sophisticated"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Render generated images as static assets in frontend/public/assets/generated for the fairsart store logo and product placeholder images",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images are placed in frontend/public/assets/generated",
+        "Images are referenced correctly in React components",
+        "Store logo appears in header/navigation",
+        "Product placeholders are used where product images are not yet available"
+      ]
+    }
+  ],
+  "constraints": [
+    "Use Internet Identity for authentication (admin access)",
+    "All backend logic must be in the single main.mo actor file",
+    "Do not modify immutable frontend paths (useInternetIdentity, useActor, main.tsx, components/ui)"
+  ],
+  "nonGoals": [
+    "Payment processing integration (Stripe or other providers)",
+    "Shipping calculator or carrier integration",
+    "Real-time inventory tracking",
+    "Multi-currency support",
+    "Email notifications for orders"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Elegant artisan store logo featuring the text 'fairsart' in serif font with warm earthy color palette (fairsart-logo.dim_400x400.png)",
+      "Hero banner image with artisan products, warm lighting, and handcrafted aesthetic (hero-banner.dim_1200x400.png)",
+      "Placeholder product image with artistic geometric pattern in warm tones (product-placeholder.dim_600x600.png)"
+    ],
+    "edits": []
+  }
+}
